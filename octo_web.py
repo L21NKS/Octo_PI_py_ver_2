@@ -264,15 +264,41 @@ def create_mask():
 def get_logs():
     logs_dir = "logs"
     logs = []
+    
+    # Получаем параметры фильтрации
+    status_filter = request.args.get('status', '').strip().upper()
+    date_filter = request.args.get('date', '').strip()  # формат: YYYY-MM-DD
+    
     if os.path.exists(logs_dir):
-        log_files = sorted([f for f in os.listdir(logs_dir) if f.endswith('.log')], reverse=True)
-        for log_file in log_files[:1]:
+        # Если указана дата, ищем конкретный файл
+        if date_filter:
+            target_file = f"{date_filter}.log"
+            log_files = [target_file] if os.path.exists(os.path.join(logs_dir, target_file)) else []
+        else:
+            log_files = sorted([f for f in os.listdir(logs_dir) if f.endswith('.log')], reverse=True)[:1]
+        
+        for log_file in log_files:
             log_path = os.path.join(logs_dir, log_file)
             try:
                 with open(log_path, 'r', encoding='utf-8', errors='ignore') as f:
-                    logs = [line.strip() for line in f.readlines()[-100:]]
+                    all_lines = [line.strip() for line in f.readlines() if line.strip()]
+                    
+                    # Фильтрация по статусу
+                    if status_filter:
+                        # Формат строки: "YYYY-MM-DD HH:mm:ss | LEVEL    | message"
+                        filtered_lines = []
+                        for line in all_lines:
+                            parts = line.split('|')
+                            if len(parts) >= 2:
+                                level = parts[1].strip().upper()
+                                if level == status_filter:
+                                    filtered_lines.append(line)
+                        logs = filtered_lines[-100:]
+                    else:
+                        logs = all_lines[-100:]
             except Exception as e:
                 logger.error(f"Ошибка чтения лога: {e}")
+    
     return jsonify({'logs': logs})
 
 @app.route('/api/biometric/train', methods=['POST'])
