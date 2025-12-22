@@ -28,7 +28,7 @@
 ### Raspberry Pi 5
 
 <p align="center">
-  ![rpi5]([image-url](<img width="950" height="619" alt="image" src="https://github.com/user-attachments/assets/aeaa88bd-8d51-4403-9f23-c6fe8db62043" />
+  (<img width="950" height="619" alt="image" src="https://github.com/user-attachments/assets/aeaa88bd-8d51-4403-9f23-c6fe8db62043" />
 ))
 </p>
 
