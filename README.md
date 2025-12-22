@@ -94,7 +94,8 @@
 ### USB-хаб
 
 <p align="center">
-  <img src="https://m.media-amazon.com/images/I/61u0L0j5z7L._AC_SL1500_.jpg" alt="USB Hub 4 ports" width="350">
+  <<img width="1100" height="1100" alt="image" src="https://github.com/user-attachments/assets/c8cee2d9-ea67-4b11-bf56-fc8897a45020" />
+>
 </p>
 
 **USB-хаб с 4 портами** — используется для подключения всех камер к Raspberry Pi через один USB-порт.
