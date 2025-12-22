@@ -28,7 +28,7 @@
 ### Raspberry Pi 5
 
 <p align="center">
-  ![rpi5]([image-url](https://avatars.mds.yandex.net/get-mpic/4484220/img_id559516706968430838.png/orig))
+  ![rpi5]([image-url](https://avatars.mds.yandex.net/get-mpic/4484220/img_id559516706968430838.png))
 </p>
 
 **Raspberry Pi 5** — одноплатный компьютер пятого поколения, используемый в качестве основного вычислительного модуля системы видеонаблюдения.
